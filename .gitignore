@@ -1,0 +1,5 @@
+/node_modules
+dist
+.cache
+
+Sudoku Solver is a functional Program written in Haskell Ported to Python in Functional Programming Style. This task was part of being a Teaching Assistant for "Structured programming and formal Methods" During my Masters in Computer Science.
