@@ -10,7 +10,9 @@ const Body = () => {
   // + in below syntax, the "restaurants" is the list,
   // "setListOfRestaurants" is the functional to set the list to "restaurants", cannot modify normally
   // initialized with empty list
+
   let [restaurants, setRestaurants] = useState([]);
+
   let [filteredRestaurants, setFilteredRestaurants] = useState([]);
   //   whenever state variable changes react triggers a reconciliation cycle(re-renders the component)
   let [searchText, setSearchText] = useState("");
@@ -25,19 +27,20 @@ const Body = () => {
   const fetchData = async () => {
     const data = await fetch(SWIGGY_URL);
     const json = await data.json();
-    console.log(json);
     setRestaurants(
-      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilteredRestaurants(
-      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
 
   return restaurants.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">
+    <div className="body" onScroll={()=>{
+      
+    }}>
       <div className="filter">
         <div className="search">
           <input
