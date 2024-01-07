@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
+import RestaurantMenu from "./components/RestaurantMenu";
 
 const AppLayout = () => {
   return (
@@ -29,6 +30,8 @@ const appRouter = createBrowserRouter([
       { path: "/", element: <Body />},
       { path: "/about", element: <About /> },
       { path: "/contact", element: <Contact /> },
+      // some of the resId is not being able to load its restaurant page, dont know the reason. but the resId is correct and if make separate API call it works
+      { path: "/restaurants/:resId", element: <RestaurantMenu /> },
     ],
   },
 ]);

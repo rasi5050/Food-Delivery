@@ -4,6 +4,7 @@ import { useState } from "react";
 import RestaurantCard from "./restaurantCard";
 import { SWIGGY_URL } from "../utils/constants";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   // useState hook need to be used inside the component
@@ -28,19 +29,17 @@ const Body = () => {
     const data = await fetch(SWIGGY_URL);
     const json = await data.json();
     setRestaurants(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilteredRestaurants(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
 
   return restaurants.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body" onScroll={()=>{
-      
-    }}>
+    <div className="body" onScroll={() => {}}>
       <div className="filter">
         <div className="search">
           <input
@@ -80,7 +79,13 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filteredRestaurants.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} restaurant={restaurant} />
+          //error: link is used to dynamically load individual restaurant pages, but some of them is not working
+          <Link
+            key={restaurant.info.id}
+            to={"/restaurants/" + restaurant.info.id}
+          >
+            <RestaurantCard restaurant={restaurant} />
+          </Link>
         ))}
         {/* {restaurants.map(restaurant => <RestaurantCard key={restaurant.info.id} restaurant={restaurant} />)} */}
         {/* {restaurants.map(restaurant => <RestaurantCard key={restaurant.info.id} restaurant={restaurant} />)} */}
