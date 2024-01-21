@@ -5,6 +5,7 @@ import RestaurantCard from "./restaurantCard";
 import { SWIGGY_URL } from "../utils/constants";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   // useState hook need to be used inside the component
@@ -39,6 +40,9 @@ const Body = () => {
   };
   // console.log(restaurants)
   // console.log(filteredRestaurants)
+  const onlineStatus = useOnlineStatus()
+  if (onlineStatus === false) return (<h2>You are offline. Please check your internet connection</h2>)
+
   if (restaurants.length === 0 || filteredRestaurants.length === 0) return <Shimmer/>;
 
   // if (restaurants.length === 0 || filteredRestaurants.length === 0) return (<Shimmer/>)

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
 import { LOGO_URL } from "../utils/constants";
-import { Link } from "react-router-dom"
-
+import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
-
+  const onlineStatus = useOnlineStatus();
   return (
     <div className="header">
       <div className="logo-container">
@@ -22,14 +22,19 @@ const Header = () => {
 
           <li>
             <Link to="/contact">Contact Us</Link>
-            </li>
+          </li>
           <li>Cart</li>
+
+          <li>
+            <Link to="/lazyLoadingComponent">LazyLoadingComponent</Link>
+          </li>
           <button
             className="login-btn"
             onClick={() => setBtnName(btnName === "Login" ? "Logout" : "Login")}
           >
             {btnName}
           </button>
+          <li>Online {onlineStatus ? "✅" : "❌"}</li>
         </ul>
       </div>
     </div>

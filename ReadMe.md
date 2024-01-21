@@ -43,7 +43,9 @@ then in updating phase, render is again called, DOM is updated,
 and a following a componentDidUpdate is called.
 
 if the component is to be unmounted,
- then componentWillUnmount will be called just before its unmounted, it also have methods to cleanup stuff which might be left in shadows, like setTimer
+ then componentWillUnmount will be called just before its unmounted, it also have methods to cleanup stuff which might be left in shadows, like setTimer, wrto. functional component the cleanup will be done as a function returned from useEffect hook.
 
 
- 
+1/21/24
+added implemented single responsibility principle, custom hooks, online/offline status, dynamic loading 
+
