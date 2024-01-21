@@ -28,17 +28,24 @@ const Body = () => {
   const fetchData = async () => {
     const data = await fetch(SWIGGY_URL);
     const json = await data.json();
+    // if it becomes undefined probably swiggy would have changed api structure
+    // console.log(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     setRestaurants(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilteredRestaurants(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+  // console.log(restaurants)
+  // console.log(filteredRestaurants)
+  if (restaurants.length === 0 || filteredRestaurants.length === 0) return <Shimmer/>;
 
-  return restaurants.length === 0 ? (
-    <Shimmer />
-  ) : (
+  // if (restaurants.length === 0 || filteredRestaurants.length === 0) return (<Shimmer/>)
+  // return (restaurants === null || restaurants.length === 0) ? (
+  //   <Shimmer />
+  // ) : 
+  return (
     <div className="body" onScroll={() => {}}>
       <div className="filter">
         <div className="search">
@@ -53,12 +60,10 @@ const Body = () => {
           <button
             className="search"
             onClick={() => {
-              console.log(searchText);
               const filteredRes = restaurants.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
               setFilteredRestaurants(filteredRes);
-              console.log(restaurants);
             }}
           >
             Search
@@ -71,7 +76,7 @@ const Body = () => {
               (res) => res.info.avgRating > 4
             );
             setRestaurants(filteredList);
-            console.log(restaurants);
+        
           }}
         >
           Top Rated Restaurants
