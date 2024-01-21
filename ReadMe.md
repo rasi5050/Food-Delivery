@@ -11,8 +11,9 @@ due to some dependency in parcel making issue (https://github.com/parcel-bundler
 2. React life cycle is 
 separeted into Render and commit phase
 (ref: 1:14:00 https://courses.namastedev.com/learn/home/Namaste-React/section/333613/lesson/2352801? ep8, diagram: https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
-
+<img width="1372" alt="Screenshot 2024-01-20 at 21 03 43" src="https://github.com/rasi5050/learnReact/assets/12760472/a5eb1ee3-bdc7-4fb8-ac25-05a611d972c2">
 consider a parent and 2 children
+
 
 while mounting components are called as
 
