@@ -1,5 +1,7 @@
 
-i had to install parcel as 
+installation notes:
+
+Had to install parcel as 
 npm install parcel --ignore-scripts  
 
 had to manually install node@18 as 
@@ -7,6 +9,9 @@ brew remove  node
 brew install node@18
 due to some dependency in parcel making issue (https://github.com/parcel-bundler/parcel/issues/5294)
 
+____________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+1/20/24
 
 2. React life cycle is 
 separeted into Render and commit phase
@@ -45,7 +50,21 @@ and a following a componentDidUpdate is called.
 if the component is to be unmounted,
  then componentWillUnmount will be called just before its unmounted, it also have methods to cleanup stuff which might be left in shadows, like setTimer, wrto. functional component the cleanup will be done as a function returned from useEffect hook.
 
+____________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
 1/21/24
+
 added implemented single responsibility principle, custom hooks, online/offline status, dynamic loading 
+![lazyLoading](https://github.com/rasi5050/learnReact/assets/12760472/42da14c7-189e-4035-b9c6-423c8ffc96f9 "title")
+
+<p align="center">
+Lazy loading
+</p>
+
+![online:offline](https://github.com/rasi5050/learnReact/assets/12760472/0cc004ae-2e70-48c5-aa0e-43264703b1b7)
+
+<p align="center">
+Online/Offline
+</p>
+
 
