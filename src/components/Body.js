@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 
-import RestaurantCard from "./restaurantCard";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import { SWIGGY_URL } from "../utils/constants";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+
 
 
 const Body = () => {
@@ -19,6 +20,8 @@ const Body = () => {
   let [filteredRestaurants, setFilteredRestaurants] = useState([]);
   //   whenever state variable changes react triggers a reconciliation cycle(re-renders the component)
   let [searchText, setSearchText] = useState("");
+
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
   //useFetch is a hook that will be called after the component is rendered
   // first parameter is the callback function
@@ -105,7 +108,9 @@ const Body = () => {
 
             to={"/restaurants/" + restaurant.info.id}
           >
-            <RestaurantCard restaurant={restaurant} />
+            {/* this was discarded because i dont see promoted option in the jsob response, they might have changed it. also the swiggy UI doesnt show that, possibly older version in the tutorial had that */}
+             {/* {restaurant.data.promoted ? (<RestaurantCardPromoted restaurant={restaurant} />) : (<RestaurantCard restaurant={restaurant} />)} */}
+             <RestaurantCard restaurant={restaurant} />
           </Link>
         ))}
         {/* {restaurants.map(restaurant => <RestaurantCard key={restaurant.info.id} restaurant={restaurant} />)} */}

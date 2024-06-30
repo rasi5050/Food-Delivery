@@ -25,5 +25,20 @@ const RestaurantCard = (props) => {
       </div>
     );
   };
-  
+// higher order component for promoted label
+
+// not using because promoted was not found in json response
+export const withPromotedLabel = (RestaurantCard) => {
+return (props) => {
+  return(
+    <div>
+      <label>
+        Promoted
+      </label>
+      <RestaurantCard {...props}/>
+    </div>
+  );
+};
+};
+
   export default RestaurantCard;
